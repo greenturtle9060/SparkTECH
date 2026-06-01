@@ -1,370 +1,152 @@
-* {
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SparkLab - Southern Wayne High School</title>
+<link rel="icon" type="image/png" href="/assets/icon.png">
 
-html {
-    scroll-behavior: smooth;
-}
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
 
-body {
-    margin: 0;
-    font-family: "Oswald", sans-serif;
-    overflow-x: hidden;
-}
+<link rel="stylesheet" href="style.css">
+</head>
 
-.header {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 25px;
-    border-bottom: 2px solid #eee;
-    flex-wrap: wrap;
-    gap: 15px;
-}
+<body>
 
-.logo-area {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
-}
+<header class="header">
+    <div class="logo-area">
+        <img src="assets/logo.png">
+        <h1>
+            <span class="sparklab">SparkLab</span>
+            -
+            <span class="school">Southern Wayne High School</span>
+        </h1>
+    </div>
 
-.logo-area img {
-    height: 60px;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-}
+    <nav class="nav">
+        <a onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
+        <a onclick="document.getElementById('schedule').scrollIntoView({behavior:'smooth'})">Schedule</a>
+        <a onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Quick Links & Tools</a>
+        <a onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Learning Experience Projects</a>
+        <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Location</a>
+    </nav>
+</header>
 
-.logo-area h1 {
-    margin: 0;
-    font-size: 1.65rem;
-    font-weight: 600;
-    color: #212d6a;
-}
+<section class="hero">
+    <h2>Welcome to SparkLab</h2>
+    <p>Learn. Build. Create. Level up your tech skills.</p>
+</section>
 
-.nav {
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+<section class="section" id="about">
+    <h2>Who Are We?</h2>
+    <p>SparkNC is driven by the collaborative efforts of the SparkNC Team, SparkLab Leaders, our Board of Directors, our Business Advisory Council, and a dedicated network of engaged districts, industry and education partners. Together, these groups guide and shape SparkNC’s mission-driven work.</p>
 
-.nav a {
-    text-decoration: none;
-    color: #212d6a;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 6px 10px;
-    border-radius: 6px;
-    transition: 0.2s;
-}
+    <div class="about-images">
+        <img src="photos/image1.png" alt="About Image 1">
+        <img src="photos/image2.png" alt="About Image 2">
+    </div>
 
-.nav a:hover {
-    background: rgba(33, 45, 106, 0.08);
-}
+    <div class="leader-box">
+        <img src="photos/leader.png" alt="Leader Image">
+        <h3>Meet Your SparkLab Leader</h3>
+        <h4>Brenda Elam-Coney</h4>
+        <p>Our SparkLab is "where premium learning is designed to shape</p>
+        <p>future-ready minds as a robust high-tech corporate-level pipeline."</p>
+    </div>
+</section>
 
-.hero {
-    text-align: center;
-    padding: 70px 20px;
-    background-color: #252C6A;
-    color: white;
-}
+<section class="section" id="schedule">
+    <h2>2026 Summer SparkLab Schedule</h2>
+        <p><strong>Lab Open:</strong> Monday-Thursday (8:30 AM - 11:30 AM & 1:00 PM - 4:00 PM, unless posted otherwise)</p>
+    <div class="sheet-wrap">
+        <table class="sheet">
+            <tr>
+                <th>Dates</th>
+                <th>Time</th>
+                <th>Sign Up</th>
+            </tr>
 
-.hero h2 {
-    font-size: clamp(2rem, 6vw, 3rem);
-    margin-bottom: 10px;
-}
+            <tr>
+                <td>Date</td>
+                <td>3:00 PM-5:00 PM</td>
+                <td><a class="signup-btn" href="https://example.com" target="_blank">Sign Up</a></td>
+            </tr>
 
-.hero p {
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    margin-bottom: 25px;
-    opacity: 0.9;
-}
+            <tr>
+                <td>Date</td>
+                <td>3:00 PM-5:00 PM</td>
+                <td><a class="signup-btn" href="https://example.com" target="_blank">Sign Up</a></td>
+            </tr>
 
-.section {
-    padding: 60px 20px;
-    text-align: center;
-}
+            <tr>
+                <td>Date</td>
+                <td>3:00 PM-5:00 PM</td>
+                <td><a class="signup-btn" href="https://example.com" target="_blank">Sign Up</a></td>
+            </tr>
 
-.section h2 {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    color: #212d6a;
-}
+            <tr>
+                <td>Date</td>
+                <td>3:00 PM-5:00 PM</td>
+                <td><a class="signup-btn" href="https://example.com" target="_blank">Sign Up</a></td>
+            </tr>
 
-.section p {
-    font-size: 1.2rem;
-    color: #333;
-    max-width: 700px;
-    margin: 0 auto;
-}
+            <tr>
+                <td>Date</td>
+                <td>3:00 PM-5:00 PM</td>
+                <td><a class="signup-btn" href="https://example.com" target="_blank">Sign Up</a></td>
+            </tr>
+        </table>
+    </div>
+</section>
 
-.leader-box {
-    max-width: 600px;
-    margin: 30px auto 0;
-    padding: 20px;
-    border: 2px solid #eee;
-    border-radius: 12px;
-    text-align: center;
-}
-.leader-box h3 {
-    margin: 0 0 10px;
-    font-size: 1.5rem;
-    color: #252C6A;
-}
-.leader-box h4 {
-    margin: 0 0 10px;
-    font-size: 1.2rem;
-    color: #2FB88A;
-}
-.leader-box img {
-    width: min(150px, 40vw);
-    height: min(150px, 40vw);
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #212d6a;
-    margin-bottom: 15px;
-}
+<section class="section" id="tools">
+    <h2>Quick Links & Tools</h2>
 
-.sheet-wrap {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 20px auto;
-}
+    <div class="tools-grid">
+        <a class="tool-card" href="https://us.rhapsode.com/learner.html?s=2tGZpVmTfhzMyEzXadEUUBTNthHahlXc" target="_blank">Leaners Login Page</a>
+        <a class="tool-card" href="https://drive.google.com/file/d/1NAGbQ2u3OFPRcUtUyWSeJrKMRHZqjwzy/view" target="_blank">Student Code of Conduct</a>
+        <a class="tool-card" href="https://example.com" target="_blank">Placeholder</a>
+        <a class="tool-card" href="https://example.com" target="_blank">Placeholder</a>
+    </div>
+</section>
 
-.sheet {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border: 1px solid #d0d7de;
-}
+<section class="section" id="projects">
+    <h2>Learning Experience Projects</h2>
 
-.sheet th {
-    background: #f6f8fa;
-    color: #212d6a;
-    text-align: left;
-    padding: 12px;
-    border: 1px solid #d0d7de;
-    font-weight: 600;
-}
+    <div class="projects-grid">
 
-.sheet td {
-    padding: 12px;
-    border: 1px solid #d0d7de;
-    color: #252C6A;
-}
+        <div class="project-card">
+            <div class="video-placeholder">Video Placeholder</div>
+            <div class="image-placeholder">Image Placeholder</div>
+            <p>Project Title</p>
+        </div>
 
-.sheet tr:nth-child(even) {
-    background: #fafbfc;
-}
+        <div class="project-card">
+            <div class="video-placeholder">Video Placeholder</div>
+            <div class="image-placeholder">Image Placeholder</div>
+            <p>Project Title</p>
+        </div>
 
-.signup-btn {
-    padding: 8px 14px;
-    border: none;
-    background: #00b4e5;
-    color: white;
-    font-weight: 600;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    white-space: nowrap;
-}
+        <div class="project-card">
+            <div class="video-placeholder">Video Placeholder</div>
+            <div class="image-placeholder">Image Placeholder</div>
+            <p>Project Title</p>
+        </div>
 
-.tools-grid {
-    max-width: 900px;
-    margin: 25px auto 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-    padding: 0 20px;
-}
+    </div>
+</section>
 
-.tool-card {
-    display: block;
-    background: white;
-    border: 1px solid #d0d7de;
-    padding: 18px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: #212d6a;
-    font-weight: 600;
-    text-align: center;
-    transition: 0.2s;
-}
+<footer class="footer" id="contact">
+    <img class="footer-logo"  type="image/png" src="assets/SWHS-logo.png" alt="SWHS Logo">
 
-.tool-card:hover {
-    transform: translateY(-3px);
-    border-color: #00b4e5;
-}
+    <div class="footer-box">
+        <h1><strong>SparkLab Location:</strong></h1>
+        <p1><strong>Southern Wayne High School</strong></p1>
+        <p><strong>124 Walter Fulcher Rd
+        <p><strong>Dudley, NC 28333</strong></p>
+        <p><strong>919-705-6060 (Extension 13062 for SparkLab)</strong></p>
+    </div>
+</footer>
 
-.projects-grid {
-    max-width: 1000px;
-    margin: 25px auto 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 0 20px;
-}
-
-.project-card {
-    background: white;
-    border: 1px solid #d0d7de;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    text-align: left;
-    transition: 0.25s;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-}
-
-.video-placeholder {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #e6e6e6;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-.image-placeholder {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #f0f0f0;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #777;
-    margin-bottom: 10px;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-.footer {
-    background-color: #af000e;
-    color: white;
-    padding: 40px 20px;
-    text-align: left;
-    margin-top: 60px;
-}
-
-.footer-box p1 {
-    margin-top: 0;
-    font-size: 1.25rem;
-}
-
-.footer-box {
-    max-width: 700px;
-    margin: 0;
-    text-align: left;
-}
-
-.footer-logo {
-    width: 150px;
-    height: auto;
-    display: block;
-}
-
-@media (max-width: 768px) {
-
-    .header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .logo-area {
-        flex-direction: column;
-        width: 100%;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .logo-area h1 {
-        font-size: 1.2rem;
-    }
-
-    .nav {
-        width: 100%;
-        justify-content: center;
-        margin-top: 15px;
-    }
-
-    .sheet th,
-    .sheet td {
-        padding: 10px;
-        font-size: 0.9rem;
-    }
-
-    .footer-box {
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .hero {
-        padding: 50px 15px;
-    }
-
-    .section {
-        padding: 45px 15px;
-    }
-
-    .projects-grid,
-    .tools-grid {
-        grid-template-columns: 1fr;
-        padding: 0 10px;
-    }
-
-    .sheet th,
-    .sheet td {
-        font-size: 0.85rem;
-        padding: 8px;
-    }
-
-    .signup-btn {
-        width: 100%;
-        text-align: center;
-    }
-
-    .leader-box {
-        padding: 15px;
-    }
-
-}
-    .sparklab {
-        color: #2fb88a;
-    }
-
-    .school {
-        color: #af000e;
-    }
-    .about-images {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 25px;
-    flex-wrap: wrap;
-}
-
-.about-images img {
-    width: 300px;
-    max-width: 90%;
-    height: auto;
-    border-radius: 12px;
-    object-fit: cover;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
+</body>
+</html>
