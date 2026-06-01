@@ -108,7 +108,16 @@ body {
     border-radius: 12px;
     text-align: center;
 }
-
+.leader-box h3 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    color: #252C6A;
+}
+.leader-box h4 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    color: #2FB88A;
+}
 .leader-box img {
     width: min(150px, 40vw);
     height: min(150px, 40vw);
