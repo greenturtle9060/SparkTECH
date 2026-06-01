@@ -254,11 +254,16 @@ img {
 }
 
 .footer {
-    background-color: #00b4e5;
+    background-color: #af000e;
     color: white;
     padding: 40px 20px;
     text-align: left;
     margin-top: 60px;
+}
+
+.footer-box p1 {
+    margin-top: 0;
+    font-size: 1.25rem;
 }
 
 .footer-box {
