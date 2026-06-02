@@ -179,7 +179,7 @@
 <section class="section" id="modules">
     <h2>Self-Paced Learning Opportunities Modules</h2>
             <p>SparkNC’s Learning Experiences Catalog offers <strong>more than 50 learning opportunities </strong> (and growing!) related to high-tech fields..</p>
-            <p><strong>Six Units</strong> plus a required introductory module and a <strong>capstone experience</strong>, earns a <strong>local elective course credit</strong> toward high school graduation. Learners choose among stackable units (mini-courses) that can be combined for high school credit.</p>
+            <p><strong>Six Units</strong> plus a required introductory module and a <strong>capstone experience</strong>, earns a <strong>local elective course credit</strong> toward high school graduation. Learners choose among stackable units (mini-courses) that can be combined to earn this high school elective credit.</p>
 
     <div class="modules-container">
 
@@ -310,7 +310,7 @@
         <div class="slider-viewport">
             <div class="slider-track">
 
-                <div class="slide">
+                <div class="slide active">
                     <div class="media">
                         <video class="custom-video">
                             <source src="videos/BB-Car.mp4" type="video/mp4">
@@ -359,7 +359,8 @@
                     <h3>Dell Sustainability Plant Tour</h3>
                 </div>
 
-                <div class="slide">
+                <!-- FIXED LONG IMAGE -->
+                <div class="slide wide-image">
                     <div class="media">
                         <img src="photos/Mobile Tech Lab1.png" alt="Project Image">
                     </div>
@@ -368,14 +369,14 @@
 
                 <div class="slide">
                     <div class="media">
-                        <img src="https://picsum.photos/200/300" alt="Project Image">
+                        <img src="https://picsum.photos/800/500" alt="Project Image">
                     </div>
                     <h3>SparkTech Innovators Club & Spirit Week</h3>
                 </div>
 
                 <div class="slide">
                     <div class="media">
-                        <img src="https://picsum.photos/200/300" alt="Project Image">
+                        <img src="https://picsum.photos/800/500" alt="Project Image">
                     </div>
                     <h3>Apple App Showcase</h3>
                 </div>
@@ -398,8 +399,10 @@
         </div>
 
         <button class="slider-btn next">&#10095;</button>
-
     </div>
+
+    <!-- DOT NAVIGATION (NEW) -->
+    <div class="slider-dots"></div>
 </section>
 
 <footer class="footer" id="contact">
@@ -440,80 +443,134 @@ document.addEventListener("DOMContentLoaded", () => {
     const slides = document.querySelectorAll(".slide");
     const next = document.querySelector(".next");
     const prev = document.querySelector(".prev");
+    const dotsContainer = document.querySelector(".slider-dots");
 
     let index = 0;
+    let autoScroll;
 
-    let autoScrollInterval;
+    /* =======================
+       DOT NAVIGATION
+       ======================= */
+    slides.forEach((_, i) => {
+        const dot = document.createElement("button");
+        if (i === 0) dot.classList.add("active");
 
-    function pauseAllVideos() {
-        document.querySelectorAll(".custom-video").forEach(video => {
-            video.pause();
+        dot.addEventListener("click", () => {
+            index = i;
+            updateSlide();
+            resetAutoScroll();
         });
 
-        document.querySelectorAll(".play-btn").forEach(btn => {
-            btn.classList.remove("playing");
-            btn.classList.add("paused");
+        dotsContainer.appendChild(dot);
+    });
+
+    function updateDots() {
+        document.querySelectorAll(".slider-dots button")
+            .forEach((dot, i) => {
+                dot.classList.toggle("active", i === index);
+            });
+    }
+
+    /* =======================
+       VIDEO CONTROL SAFETY (FIXED)
+       ======================= */
+    function pauseAllVideos(except = null) {
+        document.querySelectorAll("video").forEach(v => {
+            if (v !== except) {
+                v.pause();
+                v.currentTime = v.currentTime; // prevents weird reset bugs
+            }
         });
     }
 
+    /* =======================
+       SLIDE UPDATE (STABLE VERSION)
+       ======================= */
     function updateSlide() {
+        slides.forEach((s, i) => {
+            s.classList.toggle("active", i === index);
+        });
+
+        // FIXED: single clean transform (no double assignment)
         track.style.transform = `translateX(-${index * 100}%)`;
+
         pauseAllVideos();
+        updateDots();
     }
 
+    /* =======================
+       AUTO SCROLL
+       ======================= */
     function startAutoScroll() {
-        autoScrollInterval = setInterval(() => {
-            pauseAllVideos();
+        clearInterval(autoScroll);
+
+        autoScroll = setInterval(() => {
             index = (index + 1) % slides.length;
             updateSlide();
         }, 8500);
     }
 
     function resetAutoScroll() {
-        clearInterval(autoScrollInterval);
         startAutoScroll();
     }
 
-    next.addEventListener("click", () => {
-        pauseAllVideos();
+    /* =======================
+       BUTTONS
+       ======================= */
+    next.onclick = () => {
         index = (index + 1) % slides.length;
         updateSlide();
         resetAutoScroll();
+    };
+
+    prev.onclick = () => {
+        index = (index - 1 + slides.length) % slides.length;
+        updateSlide();
+        resetAutoScroll();
+    };
+
+    /* =======================
+       SWIPE SUPPORT (MOBILE)
+       ======================= */
+    let startX = 0;
+
+    track.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
     });
 
-    prev.addEventListener("click", () => {
-        pauseAllVideos();
-        index = (index - 1 + slides.length) % slides.length;
+    track.addEventListener("touchend", (e) => {
+        let endX = e.changedTouches[0].clientX;
+
+        if (startX - endX > 50) {
+            index = (index + 1) % slides.length;
+        } else if (endX - startX > 50) {
+            index = (index - 1 + slides.length) % slides.length;
+        }
+
         updateSlide();
         resetAutoScroll();
     });
 
-    updateSlide();
-    startAutoScroll();
-
+    /* =======================
+       VIDEO CONTROLS (FIXED UI SYNC)
+       ======================= */
     document.querySelectorAll(".media").forEach(media => {
 
         const video = media.querySelector("video");
-        if (!video) return;
-
         const btn = media.querySelector(".play-btn");
-        const fsBtn = media.querySelector(".fs-btn");
         const bar = media.querySelector(".video-bar");
         const progress = media.querySelector(".video-progress");
 
+        if (!video || !btn) return;
+
         function setState() {
-            if (video.paused) {
-                btn.classList.remove("playing");
-                btn.classList.add("paused");
-            } else {
-                btn.classList.add("playing");
-                btn.classList.remove("paused");
-            }
+            btn.classList.toggle("playing", !video.paused);
+            btn.classList.toggle("paused", video.paused);
         }
 
         btn.addEventListener("click", () => {
             if (video.paused) {
-                pauseAllVideos();
+                pauseAllVideos(video);
                 video.play();
             } else {
                 video.pause();
@@ -521,12 +578,18 @@ document.addEventListener("DOMContentLoaded", () => {
             setState();
         });
 
-        fsBtn.addEventListener("click", () => {
-            if (!document.fullscreenElement) {
-                media.requestFullscreen();
-            } else {
-                document.exitFullscreen();
-            }
+        video.addEventListener("play", setState);
+        video.addEventListener("pause", setState);
+
+        video.addEventListener("timeupdate", () => {
+            if (!video.duration) return;
+            const percent = (video.currentTime / video.duration) * 100;
+            progress.style.width = percent + "%";
+        });
+
+        video.addEventListener("ended", () => {
+            video.currentTime = 0;
+            setState();
         });
 
         bar.addEventListener("click", (e) => {
@@ -535,54 +598,14 @@ document.addEventListener("DOMContentLoaded", () => {
             video.currentTime = percent * video.duration;
         });
 
-        let dragging = false;
-
-        bar.addEventListener("mousedown", (e) => {
-            dragging = true;
-            video.pause();
-        });
-
-        document.addEventListener("mousemove", (e) => {
-            if (!dragging) return;
-
-            const rect = bar.getBoundingClientRect();
-            const percent = (e.clientX - rect.left) / rect.width;
-
-            video.currentTime = Math.max(0, Math.min(1, percent)) * video.duration;
-        });
-
-        document.addEventListener("mouseup", () => {
-            if (dragging) {
-                dragging = false;
-                video.play();
-            }
-        });
-
-        video.addEventListener("timeupdate", () => {
-            if (!dragging) {
-                const percent = (video.currentTime / video.duration) * 100;
-                progress.style.width = percent + "%";
-            }
-        });
-
-        video.addEventListener("play", () => {
-            setState();
-            clearInterval(autoScrollInterval);
-        });
-
-        video.addEventListener("pause", () => {
-            setState();
-            resetAutoScroll();
-        });
-
-        video.addEventListener("ended", () => {
-            video.currentTime = 0;
-            setState();
-        });
-
         setState();
     });
 
+    /* =======================
+       INIT
+       ======================= */
+    updateSlide();
+    startAutoScroll();
 });
 </script>
 
