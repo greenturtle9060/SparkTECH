@@ -31,6 +31,7 @@
         <a href="#tools">Quick Links & Tools</a>
         <a href="#modules">Modules</a>
         <a href="#projects">Learning Experience Projects</a>
+        <a href="#Recuitment">Recuitment</a>
         <a href="#contact">Location</a>
     </nav>
 </header>
@@ -359,51 +360,122 @@
                     <h3>Dell Sustainability Plant Tour</h3>
                 </div>
 
-                <!-- FIXED LONG IMAGE -->
                 <div class="slide wide-image">
                     <div class="media">
-                        <img src="photos/Mobile Tech Lab1.png" alt="Project Image">
+                        <img src="photos/BB1.png" alt="Project Image">
                     </div>
+                    <h3>Betabox Pathfinder Onsite Mobile Tech Lab - Exposure to Coding drones and self-driving autonomous vehicles</h3>
+                </div>
+                
+                <div class="slide wide-image">
+                    <div class="media">
+                        <video class="custom-video">
+                            <source src="videos/BB2.mp4" type="video/mp4">
+                        </video>
+
+                        <div class="video-ui">
+                            <button class="play-btn">
+                                <span class="icon"></span>
+                            </button>
+
+                            <button class="fs-btn">⛶</button>
+
+                            <div class="video-bar">
+                                <div class="video-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h3>Betabox Pathfinder Onsite Mobile Tech Lab - Exposure to Coding drones and self-driving autonomous vehicles</h3>
                 </div>
 
                 <div class="slide">
                     <div class="media">
-                        <img src="https://picsum.photos/800/500" alt="Project Image">
+                        <img src="photos/Club1.png" alt="Project Image">
+                    </div>
+                    <h3>SparkTech Innovators Club & Spirit Week</h3>
+                </div>
+                
+                <div class="slide">
+                    <div class="media">
+                        <img src="photos/Club2.png" alt="Project Image">
+                    </div>
+                    <h3>SparkTech Innovators Club & Spirit Week</h3>
+                </div>
+                
+                <div class="slide">
+                    <div class="media">
+                        <img src="photos/Club3.png" alt="Project Image">
                     </div>
                     <h3>SparkTech Innovators Club & Spirit Week</h3>
                 </div>
 
                 <div class="slide">
                     <div class="media">
-                        <img src="https://picsum.photos/800/500" alt="Project Image">
+                        <img src="photos/Apple1.png" alt="Project Image">
+                    </div>
+                    <h3>Apple App Showcase</h3>
+                </div>
+                
+                <div class="slide">
+                    <div class="media">
+                        <img src="photos/Apple2.png" alt="Project Image">
                     </div>
                     <h3>Apple App Showcase</h3>
                 </div>
 
+
                 <div class="slide">
                     <div class="media">
-                        <img src="photos/Ribbon Cutting Ceremony1.png" alt="Project Image">
+                        <img src="photos/Ribbon Cutting1.png" alt="Project Image">
                     </div>
                     <h3>Ribbon Cutting Ceremony & Launch Event</h3>
                 </div>
 
                 <div class="slide">
                     <div class="media">
-                        <img src="photos/Ribbon Cutting Ceremony2.png" alt="Project Image">
+                        <img src="photos/Ribbon Cutting2.png" alt="Project Image">
                     </div>
-                    <h3>Ribbon Cutting Ceremony & Launch Event</h3>
+                    <h3>Ribbon Cutting Ceremony & Launch Event (Student Showcase)</h3>
                 </div>
-
             </div>
         </div>
 
         <button class="slider-btn next">&#10095;</button>
     </div>
 
-    <!-- DOT NAVIGATION (NEW) -->
     <div class="slider-dots"></div>
 </section>
+
+<section class="section" id="Recuitment">
+    <h2>Join SparkNC</h2>
+    <div class="project-slider">
+        <div class="slider-viewport">
+            <div class="slider-track">
+
+                <div class="slide active">
+                    <div class="media">
+                        <video class="custom-video">
+                            <source src="videos/Recuitment.mp4" type="video/mp4">
+                        </video>
+
+                        <div class="video-ui">
+                            <button class="play-btn">
+                                <span class="icon"></span>
+                            </button>
+
+                            <button class="fs-btn">⛶</button>
+
+                            <div class="video-bar">
+                                <div class="video-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                        <h3>Are you ready to join and elevate your Spark? Click the button below to express your interest in joining the SparkLab community of learners!</h3>
+                        <a class="signup-btn" href="https://example.com" target="_blank">Sign Up</a>
+                </div>  
+</section>
+
 
 <footer class="footer" id="contact">
 
@@ -447,10 +519,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let index = 0;
     let autoScroll;
+    let isVideoPlaying = false;
 
-    /* =======================
-       DOT NAVIGATION
-       ======================= */
     slides.forEach((_, i) => {
         const dot = document.createElement("button");
         if (i === 0) dot.classList.add("active");
@@ -465,46 +535,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function updateDots() {
-        document.querySelectorAll(".slider-dots button")
-            .forEach((dot, i) => {
-                dot.classList.toggle("active", i === index);
-            });
-    }
-
-    /* =======================
-       VIDEO CONTROL SAFETY (FIXED)
-       ======================= */
-    function pauseAllVideos(except = null) {
-        document.querySelectorAll("video").forEach(v => {
-            if (v !== except) {
-                v.pause();
-                v.currentTime = v.currentTime; // prevents weird reset bugs
-            }
+        document.querySelectorAll(".slider-dots button").forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
         });
     }
 
-    /* =======================
-       SLIDE UPDATE (STABLE VERSION)
-       ======================= */
+    function pauseAllVideos(except = null) {
+        document.querySelectorAll("video").forEach(v => {
+            if (v !== except) v.pause();
+        });
+    }
+
     function updateSlide() {
         slides.forEach((s, i) => {
             s.classList.toggle("active", i === index);
         });
 
-        // FIXED: single clean transform (no double assignment)
         track.style.transform = `translateX(-${index * 100}%)`;
 
         pauseAllVideos();
         updateDots();
     }
 
-    /* =======================
-       AUTO SCROLL
-       ======================= */
     function startAutoScroll() {
         clearInterval(autoScroll);
 
         autoScroll = setInterval(() => {
+            if (isVideoPlaying) return;
             index = (index + 1) % slides.length;
             updateSlide();
         }, 8500);
@@ -514,9 +571,6 @@ document.addEventListener("DOMContentLoaded", () => {
         startAutoScroll();
     }
 
-    /* =======================
-       BUTTONS
-       ======================= */
     next.onclick = () => {
         index = (index + 1) % slides.length;
         updateSlide();
@@ -529,9 +583,6 @@ document.addEventListener("DOMContentLoaded", () => {
         resetAutoScroll();
     };
 
-    /* =======================
-       SWIPE SUPPORT (MOBILE)
-       ======================= */
     let startX = 0;
 
     track.addEventListener("touchstart", (e) => {
@@ -551,17 +602,15 @@ document.addEventListener("DOMContentLoaded", () => {
         resetAutoScroll();
     });
 
-    /* =======================
-       VIDEO CONTROLS (FIXED UI SYNC)
-       ======================= */
     document.querySelectorAll(".media").forEach(media => {
 
         const video = media.querySelector("video");
         const btn = media.querySelector(".play-btn");
         const bar = media.querySelector(".video-bar");
         const progress = media.querySelector(".video-progress");
+        const fsBtn = media.querySelector(".fs-btn");
 
-        if (!video || !btn) return;
+        if (!video || !btn || !bar || !progress) return;
 
         function setState() {
             btn.classList.toggle("playing", !video.paused);
@@ -569,41 +618,67 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         btn.addEventListener("click", () => {
+
             if (video.paused) {
                 pauseAllVideos(video);
                 video.play();
             } else {
                 video.pause();
             }
+
             setState();
         });
 
-        video.addEventListener("play", setState);
-        video.addEventListener("pause", setState);
+        video.addEventListener("play", () => {
+            isVideoPlaying = true;
+            pauseAllVideos(video);
+            setState();
+        });
 
-        video.addEventListener("timeupdate", () => {
-            if (!video.duration) return;
-            const percent = (video.currentTime / video.duration) * 100;
-            progress.style.width = percent + "%";
+        video.addEventListener("pause", () => {
+            isVideoPlaying = false;
+            setState();
         });
 
         video.addEventListener("ended", () => {
+            isVideoPlaying = false;
             video.currentTime = 0;
             setState();
         });
 
+        video.addEventListener("timeupdate", () => {
+            if (!video.duration || isNaN(video.duration)) return;
+            const percent = (video.currentTime / video.duration) * 100;
+            progress.style.width = percent + "%";
+        });
+
         bar.addEventListener("click", (e) => {
+
+            if (!video.duration) return;
+
             const rect = bar.getBoundingClientRect();
             const percent = (e.clientX - rect.left) / rect.width;
-            video.currentTime = percent * video.duration;
+
+            video.currentTime = Math.max(0, Math.min(1, percent)) * video.duration;
         });
+
+        if (fsBtn) {
+            fsBtn.addEventListener("click", async () => {
+                try {
+                    if (!document.fullscreenElement) {
+                        await media.requestFullscreen();
+                    } else {
+                        await document.exitFullscreen();
+                    }
+                } catch (err) {
+                    console.log(err);
+                }
+            });
+        }
 
         setState();
     });
 
-    /* =======================
-       INIT
-       ======================= */
     updateSlide();
     startAutoScroll();
 });
