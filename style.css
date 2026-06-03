@@ -122,6 +122,14 @@ img {
     color: #2FB88A;
 }
 
+.contact-label {
+    color: #2FB88A;
+}
+
+.contact-value {
+    color: #000;
+}
+
 .leader-box img {
     width: min(150px, 40vw);
     height: min(150px, 40vw);
@@ -573,4 +581,4 @@ img {
 
 .slider-dots button.active {
     background: #2fb88a;
-}
+} 
