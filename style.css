@@ -146,15 +146,17 @@ img {
 
 .sheet {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
-    background: white;
-    border: 1px solid #d0d7de;
 }
 
 .sheet th,
 .sheet td {
     padding: 12px;
-    border: 1px solid #d0d7de;
+    border: 1px solid #ddd;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
 }
 
 .sheet th {
@@ -346,7 +348,6 @@ img {
     will-change: transform;
 }
 
-/* SLIDE FIX */
 .slide {
     min-width: 100%;
     flex: 0 0 100%;
@@ -355,7 +356,6 @@ img {
     align-items: center;
 }
 
-/* MEDIA FIX (ONLY ONE VERSION — IMPORTANT) */
 .media {
     position: relative;
     width: 100%;
@@ -367,7 +367,6 @@ img {
     overflow: hidden;
 }
 
-/* video/image fit */
 .media img,
 .media video {
     width: 100%;
@@ -375,7 +374,6 @@ img {
     object-fit: contain;
 }
 
-/* SLIDE TEXT */
 .slide h3 {
     margin-top: 15px;
     color: #212d6a;
@@ -383,7 +381,6 @@ img {
     line-height: 1.4;
 }
 
-/* ARROWS */
 .slider-btn {
     position: absolute;
     top: 45%;
@@ -524,7 +521,6 @@ img {
     background: #2fb88a;
 }
 
-/* RESPONSIVE FIX */
 @media (max-width: 768px) {
     .media { aspect-ratio: 16 / 10; }
 
@@ -562,7 +558,6 @@ img {
     }
 }
 
-/* DOTS */
 .slider-dots {
     display: flex;
     justify-content: center;
