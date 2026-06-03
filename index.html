@@ -67,6 +67,13 @@
             Our SparkLab is "where premium learning is designed to shape
             future-ready minds as a robust high-tech corporate-level pipeline."
         </p>
+        <div>
+<h3>    </h3>
+            <h3>Contact Information</h3>
+            <h5>Phone Number:</h5>
+            <h5>Email: </h5>
+
+        </div>
     </div>
 </section>
 
@@ -77,6 +84,7 @@
         <strong>Lab Open:</strong>
         Monday-Thursday (8:30 AM - 11:30 AM & 1:00 PM - 4:00 PM)
     </p>
+    <p>Click the <strong>Sign Up</strong> button below to join one of the following dates!</p>
     <a class="signup-btn" href="https://example.com" target="_blank">Sign Up</a>
     <div class="sheet-wrap">
         <table class="sheet">
@@ -86,18 +94,12 @@
                 <th style="background:#2fb88a; color:white;">Tuesday</th>
                 <th style="background:#2fb88a; color:white;">Wednesday</th>
                 <th style="background:#2fb88a; color:white;">Thursday</th>
+                <th style="background:#2fb88a; color:white;">Friday</th>
             </tr>
 
             <tr>
-                <td style="background:#F6CF3E; color:black;">Date</td>
+                <td style="background:#F6CF3E; color:black;">June 8-11</td>
                 <td>Lab Closed</td>
-                <td>Lab Closed</td>
-                <td>Lab Closed</td>
-                <td>Lab Closed</td>
-            </tr>
-
-            <tr>
-                <td style="background:#F6CF3E; color:black;">Date</td>
                 <td>Lab Closed</td>
                 <td>Lab Closed</td>
                 <td>Lab Closed</td>
@@ -105,39 +107,71 @@
             </tr>
 
             <tr>
-                <td style="background:#F6CF3E; color:black;">Date</td>
+                <td style="background:#F6CF3E; color:black;">June 15-19</td>
+                <td>Offsite SparkTech STEM Camp (8AM-3:30PM)</td>
+                <td>Offsite SparkTech STEM Camp (8AM-3:30PM)</td>
+                <td>Offsite SparkTech STEM Camp (8AM-3:30PM)</td>
+                <td>Offsite SparkTech STEM Camp (8AM-3:30PM)</td>
                 <td>Lab Closed</td>
+            </tr>
+
+            <tr>
+                <td style="background:#F6CF3E; color:black;">June 22-26</td>
+                <td>Open Lab for Students enrolled in Statewide Teamship District C (8AM-12PM)</td>
+                <td>Open Lab for Students enrolled in Statewide Teamship District C (8AM-12PM)</td>
+                <td>Open Lab for Students enrolled in Statewide Teamship District C (8AM-12PM)</td>
+                <td>Open Lab for Students enrolled in Statewide Teamship District C (8AM-12PM)</td>
                 <td>Lab Closed</td>
+            </tr>
+
+            <tr>
+                <td style="background:#F6CF3E; color:black;">June 29-July 3</td>
+                <td>Vacation (Lab Closed)</td>
+                <td>Vacation (Lab Closed)</td>
+                <td>Vacation (Lab Closed)</td>
+                <td>Vacation (Lab Closed)</td>
+                <td>Vacation (Lab Closed)</td>
+            </tr>
+
+            <tr>
+                <td style="background:#F6CF3E; color:black;">July 6-10</td>
+                <td>Lab Closed</td>
+                <td>Open Lab (8-11:30AM & 1-4:30PM)</td>
+                <td>Open Lab (8-11:30AM & 1-4:30PM)</td>
                 <td>Lab Closed</td>
                 <td>Lab Closed</td>
             </tr>
 
             <tr>
-                <td style="background:#F6CF3E; color:black;">Date</td>
+                <td style="background:#F6CF3E; color:black;">July 13-17</td>
+                <td>Lab Closed</td>
+                <td>Open Lab (8-11:30AM & 1-4:30PM)</td>
+                <td>Open Lab (8-11:30AM & 1-4:30PM)</td>
                 <td>Lab Closed</td>
                 <td>Lab Closed</td>
+            </tr>
+                             
+            <tr>
+                <td style="background:#F6CF3E; color:black;">July 20-24</td>
+                <td>Lab Closed</td>
+                <td>Open Lab (8-11:30AM)</td>
+                <td>Open Lab (8-11:30AM)</td>
+                <td>Lab Closed</td>
+                <td>Lab Closed</td>
+            </tr>
+                                              
+            <tr>
+                <td style="background:#F6CF3E; color:black;">July 27-31</td>
+                <td>Lab Closed</td>
+                <td>Open Lab (8-11:30AM)</td>
+                <td>Open Lab (8-11:30AM)</td>
                 <td>Lab Closed</td>
                 <td>Lab Closed</td>
             </tr>
 
             <tr>
-                <td style="background:#F6CF3E; color:black;">Date</td>
+                <td style="background:#F6CF3E; color:black;">August 3-21</td>
                 <td>Lab Closed</td>
-                <td>Lab Closed</td>
-                <td>Lab Closed</td>
-                <td>Lab Closed</td>
-            </tr>
-
-            <tr>
-                <td style="background:#F6CF3E; color:black;">Date</td>
-                <td>Lab Closed</td>
-                <td>Lab Closed</td>
-                <td>Lab Closed</td>
-                <td>Lab Closed</td>
-            </tr>
-                 
-            <tr>
-                <td style="background:#F6CF3E; color:black;">Date</td>
                 <td>Lab Closed</td>
                 <td>Lab Closed</td>
                 <td>Lab Closed</td>
@@ -512,14 +546,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const track = document.querySelector(".slider-track");
-    const slides = document.querySelectorAll(".slide");
+    const slides = track.querySelectorAll(".slide");
     const next = document.querySelector(".next");
     const prev = document.querySelector(".prev");
     const dotsContainer = document.querySelector(".slider-dots");
 
     let index = 0;
     let autoScroll;
-    let isVideoPlaying = false;
+    let uiTimers = new Map();
 
     slides.forEach((_, i) => {
         const dot = document.createElement("button");
@@ -546,6 +580,123 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+function hideUI(ui) {
+    ui.classList.remove("show");
+}
+
+function showUI(ui) {
+    ui.classList.add("show");
+}
+
+    function resetUITimer(ui, video) {
+        clearTimeout(uiTimers.get(ui));
+
+        const t = setTimeout(() => {
+            if (!video.paused) {
+                hideUI(ui);
+            }
+        }, 1500);
+
+        uiTimers.set(ui, t);
+    }
+
+    function setupMedia(media) {
+
+        const video = media.querySelector("video");
+        const btn = media.querySelector(".play-btn");
+        const bar = media.querySelector(".video-bar");
+        const progress = media.querySelector(".video-progress");
+        const fsBtn = media.querySelector(".fs-btn");
+        const ui = media.querySelector(".video-ui");
+
+        if (!video || !btn || !bar || !progress || !ui) return;
+
+        function setState() {
+            btn.classList.toggle("playing", !video.paused);
+            btn.classList.toggle("paused", video.paused);
+        }
+
+        function show() {
+            showUI(ui);
+            resetUITimer(ui, video);
+        }
+
+        function togglePlay() {
+            if (video.paused) {
+                pauseAllVideos(video);
+                video.play();
+            } else {
+                video.pause();
+            }
+            setState();
+            show();
+        }
+
+        media.addEventListener("pointermove", show);
+        media.addEventListener("pointerdown", show);
+        media.addEventListener("touchstart", show, { passive: true });
+
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            togglePlay();
+        });
+
+        video.addEventListener("click", togglePlay);
+
+        video.addEventListener("play", () => {
+            pauseAllVideos(video);
+            setState();
+            show();
+        });
+
+        video.addEventListener("pause", () => {
+            setState();
+            show();
+        });
+
+        video.addEventListener("ended", () => {
+            video.currentTime = 0;
+            setState();
+            show();
+        });
+
+        video.addEventListener("timeupdate", () => {
+            if (!video.duration) return;
+            progress.style.width =
+                (video.currentTime / video.duration) * 100 + "%";
+        });
+
+        bar.addEventListener("click", (e) => {
+            if (!video.duration) return;
+
+            const rect = bar.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+
+            video.currentTime = Math.max(0, Math.min(1, percent)) * video.duration;
+
+            show();
+        });
+
+        if (fsBtn) {
+            fsBtn.addEventListener("click", async (e) => {
+                e.stopPropagation();
+
+                if (!document.fullscreenElement) {
+                    await media.requestFullscreen();
+                } else {
+                    await document.exitFullscreen();
+                }
+
+                show();
+            });
+        }
+
+        setState();
+        show();
+    }
+
+    document.querySelectorAll(".media").forEach(setupMedia);
+
     function updateSlide() {
         slides.forEach((s, i) => {
             s.classList.toggle("active", i === index);
@@ -554,6 +705,11 @@ document.addEventListener("DOMContentLoaded", () => {
         track.style.transform = `translateX(-${index * 100}%)`;
 
         pauseAllVideos();
+
+        document.querySelectorAll(".video-ui").forEach(ui => {
+            showUI(ui);
+        });
+
         updateDots();
     }
 
@@ -561,9 +717,16 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(autoScroll);
 
         autoScroll = setInterval(() => {
-            if (isVideoPlaying) return;
+
+            const anyVideoPlaying =
+                [...document.querySelectorAll("video")]
+                .some(v => !v.paused);
+
+            if (anyVideoPlaying) return;
+
             index = (index + 1) % slides.length;
             updateSlide();
+
         }, 8500);
     }
 
@@ -590,93 +753,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     track.addEventListener("touchend", (e) => {
-        let endX = e.changedTouches[0].clientX;
+        const endX = e.changedTouches[0].clientX;
 
-        if (startX - endX > 50) {
-            index = (index + 1) % slides.length;
-        } else if (endX - startX > 50) {
-            index = (index - 1 + slides.length) % slides.length;
-        }
+        if (startX - endX > 50) index = (index + 1) % slides.length;
+        else if (endX - startX > 50) index = (index - 1 + slides.length) % slides.length;
 
         updateSlide();
         resetAutoScroll();
-    });
-
-    document.querySelectorAll(".media").forEach(media => {
-
-        const video = media.querySelector("video");
-        const btn = media.querySelector(".play-btn");
-        const bar = media.querySelector(".video-bar");
-        const progress = media.querySelector(".video-progress");
-        const fsBtn = media.querySelector(".fs-btn");
-
-        if (!video || !btn || !bar || !progress) return;
-
-        function setState() {
-            btn.classList.toggle("playing", !video.paused);
-            btn.classList.toggle("paused", video.paused);
-        }
-
-        btn.addEventListener("click", () => {
-
-            if (video.paused) {
-                pauseAllVideos(video);
-                video.play();
-            } else {
-                video.pause();
-            }
-
-            setState();
-        });
-
-        video.addEventListener("play", () => {
-            isVideoPlaying = true;
-            pauseAllVideos(video);
-            setState();
-        });
-
-        video.addEventListener("pause", () => {
-            isVideoPlaying = false;
-            setState();
-        });
-
-        video.addEventListener("ended", () => {
-            isVideoPlaying = false;
-            video.currentTime = 0;
-            setState();
-        });
-
-        video.addEventListener("timeupdate", () => {
-            if (!video.duration || isNaN(video.duration)) return;
-            const percent = (video.currentTime / video.duration) * 100;
-            progress.style.width = percent + "%";
-        });
-
-        bar.addEventListener("click", (e) => {
-
-            if (!video.duration) return;
-
-            const rect = bar.getBoundingClientRect();
-            const percent = (e.clientX - rect.left) / rect.width;
-
-            video.currentTime = Math.max(0, Math.min(1, percent)) * video.duration;
-        });
-
-        if (fsBtn) {
-            fsBtn.addEventListener("click", async () => {
-                try {
-                    if (!document.fullscreenElement) {
-                        await media.requestFullscreen();
-                    } else {
-                        await document.exitFullscreen();
-                    }
-                } catch (err) {
-                    console.log(err);
-                }
-            });
-        }
-
-        setState();
     });
 
     updateSlide();
