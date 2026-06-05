@@ -72,7 +72,7 @@ img {
 
 .hero {
     text-align: center;
-    padding: 70px 20px;
+    padding: 50px 20px;
     background-color: #252C6A;
     color: white;
 }
@@ -165,7 +165,7 @@ img {
 
 .sheet th {
     background: #f6f8fa;
-    color: #212d6a;
+    color: #252C6A;
     font-weight: 600;
 }
 
@@ -272,8 +272,8 @@ img {
 .footer {
     background-color: #af000e;
     color: white;
-    padding: 40px 20px;
-    margin-top: 60px;
+    padding: 10px 20px;
+    margin-top: 50px;
 }
 
 .footer-box {
