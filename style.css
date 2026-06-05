@@ -138,9 +138,9 @@ img {
     object-fit: cover;
 }
 
+
 .sheet-wrap {
     width: 100%;
-    overflow-x: auto;
     margin: 20px auto;
 }
 
@@ -156,7 +156,9 @@ img {
     border: 1px solid #ddd;
     text-align: center;
     vertical-align: middle;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.4;
 }
 
 .sheet th {
@@ -172,6 +174,35 @@ img {
 .sheet tr:nth-child(even) {
     background: #fafbfc;
 }
+
+@media (max-width: 768px) {
+
+    .sheet th,
+    .sheet td {
+        padding: 8px 4px;
+        font-size: 0.75rem;
+        line-height: 1.25;
+    }
+
+    .sheet tr:first-child th {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .sheet th,
+    .sheet td {
+        padding: 6px 3px;
+        font-size: 0.65rem;
+        line-height: 1.15;
+    }
+
+    .sheet tr:first-child th {
+        white-space: nowrap;
+    }
+}
+
 
 .signup-btn {
     padding: 8px 14px;
