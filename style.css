@@ -43,9 +43,10 @@ img {
 
 .logo-area h1 {
     margin: 0;
-    font-size: 1.65rem;
     font-weight: 600;
     color: #212d6a;
+    font-size: clamp(1rem, 2.5vw, 1.65rem);
+    line-height: 1.2;
 }
 
 .nav {
@@ -67,6 +68,7 @@ img {
 .nav a:hover {
     background: rgba(33, 45, 106, 0.08);
 }
+
 
 .hero {
     text-align: center;
