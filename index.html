@@ -14,7 +14,8 @@
 
 <body>
 
-<header class="header">
+<section class="home" id="home">
+    <header class="header" id="header">
     <div class="logo-area">
         <img src="assets/logo.png" alt="SparkLab Logo">
 
@@ -25,7 +26,8 @@
         </h1>
     </div>
 
-    <nav class="nav">
+    <nav class="nav" id="nav">
+        <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#schedule">Schedule</a>
         <a href="#tools">Quick Links & Tools</a>
@@ -34,7 +36,10 @@
         <a href="#Recuitment">Recuitment</a>
         <a href="#contact">Location</a>
     </nav>
+
+    <button class="hamburger" id="hamburger">☰</button>
 </header>
+</section>
 
 <section class="hero">
     <h2>Welcome to SparkLab</h2>
@@ -140,7 +145,7 @@
 
             <tr>
                 <td style="background:#F6CF3E; color:black;">June 22-26</td>
-                <th style="color:#2fb88a;">Open Lab for Students enrolled in Statewide Teamship District C (8AM-12PM)</th>
+                <th style="color:#3470be;">Lab Closed</th>
                 <th style="color:#2fb88a;">Open Lab for Students enrolled in Statewide Teamship District C (8AM-12PM)</th>
                 <th style="color:#2fb88a;">Open Lab for Students enrolled in Statewide Teamship District C (8AM-12PM)</th>
                 <th style="color:#2fb88a;">Open Lab for Students enrolled in Statewide Teamship District C (8AM-12PM)</th>
@@ -149,11 +154,11 @@
 
             <tr>
                 <td style="background:#F6CF3E; color:black;">June 29-July 3</td>
-                <th> Vacation (Lab Closed)</th>
-                <th> Vacation (Lab Closed)</th>
-                <th> Vacation (Lab Closed)</th>
-                <th> Vacation (Lab Closed)</th>
-                <th> Vacation (Lab Closed)</th>
+                <th style="color:#3470be;">Vacation (Lab Closed)</th>
+                <th style="color:#3470be;">Vacation (Lab Closed)</th>
+                <th style="color:#3470be;">Vacation (Lab Closed)</th>
+                <th style="color:#3470be;">Vacation (Lab Closed)</th>
+                <th style="color:#3470be;">Vacation (Lab Closed)</th>
             </tr>
 
             <tr>
@@ -194,11 +199,11 @@
 
             <tr>
                 <td style="background:#F6CF3E; color:black;">August 3-7</td>
-                <th> Vacation (Lab Closed)</th>
-                <th> Vacation (Lab Closed)</th>
-                <th> Vacation (Lab Closed)</th>
-                <th> Vacation (Lab Closed)</th>
-                <th> Vacation (Lab Closed)</th>
+                <th style="color:#3470be;">Vacation (Lab Closed)</th>
+                <th style="color:#3470be;">Vacation (Lab Closed)</th>
+                <th style="color:#3470be;">Vacation (Lab Closed)</th>
+                <th style="color:#3470be;">Vacation (Lab Closed)</th>
+                <th style="color:#3470be;">Vacation (Lab Closed)</th>
             </tr>
 
             <tr>
@@ -426,6 +431,13 @@
                     </div>
                     <h3>Dell Sustainability Plant Tour</h3>
                 </div>
+
+                <div class="slide wide-image">
+                    <div class="media">
+                        <img src="photos/BB1.png" alt="Project Image">
+                    </div>
+                    <h3>Betabox Pathfinder Onsite Mobile Tech Lab - Exposure to Coding drones and self-driving autonomous vehicles</h3>
+                </div>
                 
                 <div class="slide wide-image">
                     <div class="media">
@@ -446,13 +458,6 @@
                         </div>
                     </div>
 
-                    <h3>Betabox Pathfinder Onsite Mobile Tech Lab - Exposure to Coding drones and self-driving autonomous vehicles</h3>
-                </div>
-
-                <div class="slide wide-image">
-                    <div class="media">
-                        <img src="photos/BB1.png" alt="Project Image">
-                    </div>
                     <h3>Betabox Pathfinder Onsite Mobile Tech Lab - Exposure to Coding drones and self-driving autonomous vehicles</h3>
                 </div>
 
@@ -797,6 +802,23 @@ function showUI(ui) {
 
     updateSlide();
     startAutoScroll();
+});
+
+const header = document.getElementById("header");
+const nav = document.getElementById("nav");
+const hamburger = document.getElementById("hamburger");
+
+window.addEventListener("scroll", () => {
+    const scrolled = window.scrollY > 150;
+
+    header.classList.toggle("scrolled", scrolled);
+    if (!scrolled) {
+        nav.classList.remove("open");
+    }
+});
+
+hamburger.addEventListener("click", () => {
+    nav.classList.toggle("open");
 });
 </script>
 
